@@ -69,6 +69,7 @@ jobs:
          with:
            artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
            name: ErfanGSIs-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
+           bodyFile: "${{ github.workspace }}/ErfanGSIs/output/upload/build_info.txt"
            tag: ErfanGSIs-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
            token: ${{ secrets.GITHUB_TOKEN }}
 
