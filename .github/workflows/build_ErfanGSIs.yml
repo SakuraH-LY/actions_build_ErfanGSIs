@@ -67,7 +67,7 @@ jobs:
        - name: 上传到奶牛网盘
          run: |
             curl -sL https://git.io/cowtransfer | sh
-            ./cowtransfer-uploader cof ./upload/GSI.zip
+            ./cowtransfer-uploader cof $GITHUB_WORKSPACE/ErfanGSIs/output/upload/GSI.zip
               
        - name: Upload SGSI to action-release...
          uses: ncipollo/release-action@v1.8.6
