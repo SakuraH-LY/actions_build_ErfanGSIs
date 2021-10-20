@@ -64,19 +64,10 @@ jobs:
               fi
               ls "upload"
               
-       - name: 上传到奶牛网盘
+       - name: upload gof
          run: |
-            curl -sL https://git.io/cowtransfer | sh
+            curl -sL https://git.io/file-transfer | sh
             ./cowtransfer-uploader cof $GITHUB_WORKSPACE/ErfanGSIs/output/upload/GSI.zip
-              
-       - name: Upload SGSI to action-release...
-         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
-           name: ErfanGSIs-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
-           bodyFile: "${{ github.workspace }}/ErfanGSIs/output/upload/build_info.txt"
-           tag: ErfanGSIs-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
-           token: ${{ secrets.GITHUB_TOKEN }}
-
+            
          
             
