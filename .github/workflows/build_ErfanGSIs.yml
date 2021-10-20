@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://coloroswebsitefs.coloros.com/coloroswebsite-coloros-com/grs_20210422084808/PCLM10_11_OTA_1350_all_RdVc0SEDWd4u.ozip
+  ROM_URL: https://coloroswebsitefs.coloros.com/coloroswebsite-coloros-com/null_20210715141149/PBEM00_11_OTA_3220_all_EV9Qm62kk7GT.ozip
   ROM_NAME: Generic
   BUILD_TYPE: ab
   ZIP_NAME: color.ozip
