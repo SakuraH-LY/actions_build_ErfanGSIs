@@ -15,7 +15,7 @@ on:
     
 env:
   ROM_URL: https://coloroswebsitefs.coloros.com/coloroswebsite-coloros-com/grs_20210422084808/PCLM10_11_OTA_1350_all_RdVc0SEDWd4u.ozip
-  ROM_NAME: MIUI
+  ROM_NAME: Generic
   BUILD_TYPE: ab
   ZIP_NAME: color.ozip
   TZ: Asia/Shanghai
