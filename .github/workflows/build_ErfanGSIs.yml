@@ -57,7 +57,7 @@ jobs:
              aria2c -c -x16 -s20 -j20 -o $ZIP_NAME $ROM_URL
              ./ozipdecrypt.py $ZIP_NAME
              sudo apt install unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller device-tree-compiler liblzma-dev python-pip brotli liblz4-tool gawk aria2        
-             sudo bash ./url2GSI.sh -c --$BUILD_TYPE $GITHUB_WORKSPACE/ErfanGSIs/oppo_ozip_decrypt/$ZIP_NAME $ROM_NAME
+             cd .. && sudo bash ./url2GSI.sh -c --$BUILD_TYPE $GITHUB_WORKSPACE/ErfanGSIs/oppo_ozip_decrypt/$ZIP_NAME $ROM_NAME
        
        - name: Zip GSI  
          run: |
