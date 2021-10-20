@@ -14,9 +14,10 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/21.4.22/miui_VIOLET_21.4.22_904fe2ee16_10.0.zip
+  ROM_URL: https://coloroswebsitefs.coloros.com/coloroswebsite-coloros-com/grs_20210422084808/PCLM10_11_OTA_1350_all_RdVc0SEDWd4u.ozip
   ROM_NAME: MIUI
   BUILD_TYPE: ab
+  ZIP_NAME: color.ozip
   TZ: Asia/Shanghai
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@master
-           
+         
        - name: Initialization environment
          run: |
             sudo -E apt-get -qq install git wget
@@ -49,7 +50,13 @@ jobs:
        - name: Download Stock Rom & Generate GSI
          run: |
              cd $GITHUB_WORKSPACE/ErfanGSIs
-             sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+             git clone https://github.com/bkerler/oppo_ozip_decrypt.git >/dev/null
+             cd oppo_ozip_decrypt
+             sudo apt install python3-pip
+             pip3 install -r requirements.txt
+             ./ozipdecrypt.py $ZIP_NAME
+             sudo apt install unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller device-tree-compiler liblzma-dev python-pip brotli liblz4-tool gawk aria2             aria2c -c -x16 -s20 -j20 -o $ZIP_NAME $ROM_URL
+             sudo bash ./url2GSI.sh -c --$BUILD_TYPE $GITHUB_WORKSPACE/ErfanGSIs/oppo_ozip_decrypt/$ZIP_NAME $ROM_NAME
        
        - name: Zip GSI  
          run: |
@@ -67,7 +74,7 @@ jobs:
        - name: upload gof
          run: |
             curl -sL https://git.io/file-transfer | sh
-            ./cowtransfer-uploader cof $GITHUB_WORKSPACE/ErfanGSIs/output/upload/GSI.zip
+            ./transfer gof $GITHUB_WORKSPACE/ErfanGSIs/output/upload/GSI.zip
             
          
             
